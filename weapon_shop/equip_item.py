@@ -1,14 +1,27 @@
 # =====================================================
-#  weapon_shop/equip_item.py — คนรับผิดชอบ: ______________________
+#  weapon_shop/equip_item.py — คนรับผิดชอบ: tin
 #  หน้าที่: ซื้อและสวมใส่อาวุธให้ลูกน้อง (เช็คเงื่อนไข 2 อย่างก่อน)
 # =====================================================
 
 def equip_item(person, weapon):
 #   - เช็คเงิน: เงินของ person ไม่พอราคา weapon -> ซื้อไม่ได้
+    
 #   - เช็คอาวุธ: person มีอาวุธอยู่แล้ว (equipment ไม่ใช่ "ไม่มี") -> ใส่เพิ่มไม่ได้
 #   - ผ่านทั้งคู่ -> หักเงิน, เปลี่ยน equipment เป็นชื่ออาวุธ, บวก bonus เข้า power
 #   - return {"status": True/False, "message": ข้อความบอกผล}
     # TODO: เขียนโค้ดตรงนี้
+    person_money = int(person["money"])
+    person_power = int(person["power"])
+    weapon_price = int(weapon["price"])
+    weapon_bonus = int(weapon["bonus"])
+    if person_money > weapon_price:
+        if person["equipment"] == "ไม่มี" :
+            person["money"] = person_money - weapon_price
+            person["power"] = person_power + weapon_bonus
+            person["equipment"] = weapon['name']
+            return True
+    else: 
+        return ("มีอาวุธอยู่แล้ว")
     pass
 
 
