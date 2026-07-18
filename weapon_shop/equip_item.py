@@ -10,14 +10,15 @@ def equip_item(person, weapon):
 #   - ผ่านทั้งคู่ -> หักเงิน, เปลี่ยน equipment เป็นชื่ออาวุธ, บวก bonus เข้า power
 #   - return {"status": True/False, "message": ข้อความบอกผล}
     # TODO: เขียนโค้ดตรงนี้
-    person_money = int(person["money"])
-    person_power = int(person["power"])
-    weapon_price = int(weapon["price"])
-    weapon_bonus = int(weapon["bonus"])
-    if person_money > weapon_price:
+    # person_money = int(person["money"])
+    # person_power = int(person["power"])
+    # weapon_price = int(weapon["price"])
+    # weapon_bonus = int(weapon["bonus"])
+    # if person_money > weapon_price: เทสเฉยๆรันได้ปกติ
+    if person["money"] > weapon["price"]:
         if person["equipment"] == "ไม่มี" :
-            person["money"] = person_money - weapon_price
-            person["power"] = person_power + weapon_bonus
+            person["money"] = person["money"] - weapon["price"]
+            person["power"] = person["power"] + weapon["bonus"]
             person["equipment"] = weapon['name']
             return True
     else: 
