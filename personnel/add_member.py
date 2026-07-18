@@ -9,7 +9,18 @@ def add_member(name, age, power, money):
 #   - สร้าง dict สมาชิกใหม่ (key: name, age, role, power, money, equipment เริ่มต้น "ไม่มี")
 #   - เพิ่มเข้า family_members แล้ว return dict นั้น
     # TODO: เขียนโค้ดตรงนี้
-    pass
+    # Cal role
+    role = ""
+    if power >= 8:
+        role = "Hitman"
+    elif int(money) >= 1000000:
+        role = "Sponsor"
+    else:
+        role = "Slave"
+    family_members.append({"name": name, "age": age, "role": role,"power": power, "money": float(money), "equipment": "ไม่มี" })
+    return family_members
+    
+    
 
 
 # ทดสอบเฉพาะไฟล์ตัวเอง: พิมพ์  python -m personnel.add_member
