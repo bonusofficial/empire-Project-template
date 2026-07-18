@@ -18,7 +18,7 @@ def add_member(name, age, power, money):
     else:
         role = "Slave"
     family_members.append({"name": name, "age": age, "role": role,"power": power, "money": float(money), "equipment": "ไม่มี" })
-    return family_members
+    return {"name": name, "age": age, "role": role,"power": power, "money": float(money), "equipment": "ไม่มี" }
     
     
 
