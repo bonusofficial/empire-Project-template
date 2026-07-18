@@ -55,7 +55,13 @@ def main():
             # 2) เรียก search_member(ชื่อ) แล้วเก็บผลไว้ในตัวแปร
             # 3) ถ้าผลไม่ใช่ None -> print ข้อมูล (ชื่อ, ตำแหน่ง, เงิน, อาวุธ)
             #    ถ้าเป็น None    -> print "ไม่พบชื่อในระบบ"
-            print("!! เมนูนี้ยังไม่ถูกเชื่อม")
+            name = input("Name: ")
+            data = search_member(name)
+            if data is None:
+                print("ไม่พบชื่อในระบบ")
+            else:
+                print(f"ข้อมูล {data['name']} ตำแหน่ง {data['role']} เงิน: {data['money']} อาวุธ: {data['equipment']}")
+            # print("!! เมนูนี้ยังไม่ถูกเชื่อม")
 
         # ---------- เมนู 4 (TODO) ----------
         elif choice == '4':
@@ -65,7 +71,14 @@ def main():
             # 2) เรียก remove_member(ชื่อ) แล้วเก็บผลไว้ (ได้ True หรือ False)
             # 3) True  -> print สั่งเก็บเรียบร้อย
             #    False -> print "ไม่พบชื่อในระบบ"
-            print("!! เมนูนี้ยังไม่ถูกเชื่อม")
+            name = input("Name: ")
+            data = search_member(name)
+            if data is None:
+                print("ไม่พบชื่อในระบบ")
+            else:
+                remove_member(name)
+                print("สั่งเก็บเรียบร้อย")
+
 
         # ---------- เมนู 5 (TODO) ----------
         elif choice == '5':
@@ -80,8 +93,26 @@ def main():
             # 4) เรียก equip_item(คน, อาวุธ) แล้วเก็บผลไว้ (ได้ dict)
             #    print ผล["message"]
             #    และถ้าผล["status"] เป็น True -> print ค่าพลังใหม่ของคนนั้น
-            print("!! เมนูนี้ยังไม่ถูกเชื่อม")
+            # print("!! เมนูนี้ยังไม่ถูกเชื่อม")
+            name = input("Name: ")
+            data = search_member(name)
+            if data is None:
+                print("ไม่พบชื่อในระบบ")
+            else:
+                show_catalog()
+                code = input("Weapon: ")
+                for i in weapons_catalog:
+                    # print(i)
+                    if code == i:
+                        eq = equip_item(data, weapons_catalog[i])
+                        if eq == True:
+                            print("Add weapon!")
+                            break
 
+                    else :
+                        print("Not Found!")
+
+            # equip_item
         # ---------- เมนู 6 (TODO ของหัวหน้า — OPTIONAL) ----------
         elif choice == '6':
             print("\n--- ส่งไปทำภารกิจ ---")
@@ -91,7 +122,18 @@ def main():
             # 2) เรียก send_mission(คน) แล้วเก็บผลไว้ (ได้ dict)
             # 3) ถ้าผล["status"] เป็น True -> print ภารกิจสำเร็จ + เงินรางวัล + ยอดเงินปัจจุบัน
             #    ถ้าเป็น False -> เรียก remove_member(คน["name"]) แล้ว print ภารกิจล้มเหลว ถูกลบออกจากแฟมิลี่
-            print("!! เมนูนี้ยังไม่ถูกเชื่อม")
+            # print("!! เมนูนี้ยังไม่ถูกเชื่อม")
+            name = input("Name: ")
+            data = search_member(name)
+            if data is None:
+                print("ไม่พบรายชื่อลูกน้องคนนี้ในระบบ")
+            else:
+                send = send_mission(data)
+                if send['status'] == False:
+                    remove_member(name)
+                    print(f"ภารกิจล้มเหลว {name} ถูกลบออกจากแฟมิลี่")
+                else:
+                    print(f"ภารกิจสำเร็จ {name}, เงินรางวัล: {send['reward']} ยอดเงินปัจจุบัน {data['money']}")
 
         elif choice == '7':
             print("ปิดระบบ...")
