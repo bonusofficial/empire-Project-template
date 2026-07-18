@@ -25,3 +25,12 @@ python main.py
 
 - ขึ้น `!! ... ยังไม่ถูกเขียน` = ไฟล์ฟังก์ชันนั้นยังไม่เสร็จ ไปตามเพื่อนได้เลย 😄
 - ขึ้น `!! เมนูนี้ยังไม่ถูกเชื่อม` = หัวหน้ายังเขียนเมนูนั้นใน `main.py` ไม่เสร็จ ไปตามหัวหน้า 😆
+
+---
+  ## workshop detail
+
+  ![Task detail](./project_1(t).png)
+
+  ![Task detail](./project_1.png)
+
+  ![Task detail](./project_1(m).png)
